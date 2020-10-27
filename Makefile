@@ -23,6 +23,8 @@ DEBUG = -g3
 OPT = -O0
 # Extra C flags
 CFLAGS_EXTRA = -Wall -Werror
+# Linker flags
+LDFLAGS =
 # Executables prefix
 PREFIX = /usr/bin/
 # Echo output
@@ -78,7 +80,7 @@ $(BUILD_DIR)/%.d: $$(call bld_to_src,%.c) Makefile | $(OBJECT_DIRS)
 
 $(BUILD_DIR)/$(TARGET): $(OBJECTS) Makefile
 	@echo Linking $(TARGET)
-	$(NO_ECHO)$(CC) $(OBJECTS) -o $@
+	$(NO_ECHO)$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 	$(SZ) $@
 
 $(OBJECT_DIRS):
